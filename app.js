@@ -169,7 +169,7 @@ function renderMpStatus(){
     statusEl.textContent = "⚠️ Não conectado — conecte para poder cobrar seus clientes.";
     btn.textContent = "Conectar Mercado Pago";
   }
-  btn.href = `${BACKEND_URL}/api/mp/conectar?produto=agendapro&id=${BUSINESS.id}`;
+  btn.href = `${BACKEND_URL}/api/mp/conectar?produto=trainpro&id=${BUSINESS.id}`;
 }
 function contrastInk(hex){
   const num = parseInt(hex.slice(1),16);
@@ -446,7 +446,7 @@ async function gerarLinkPagamento(a, prof, serv){
     const resp = await fetch(`${BACKEND_URL}/api/pagamento/criar-link`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ descricao: `${BUSINESS.name} — ${serv.name}`, valor: a.price, agendamentoId: a.id, produto: "agendapro", ownerId: BUSINESS.id })
+      body: JSON.stringify({ descricao: `${BUSINESS.name} — ${serv.name}`, valor: a.price, agendamentoId: a.id, produto: "trainpro", ownerId: BUSINESS.id })
     });
     const data = await resp.json();
     if(data.error === "mp_nao_conectado"){ alert("Conecte sua conta do Mercado Pago em Configurações antes de cobrar seus clientes."); return; }
